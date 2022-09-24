@@ -1,4 +1,0 @@
-repository "Inuyasha@Inuyasha@cloud"
-  path "/"
-    br "/main"
-    co "/main"
