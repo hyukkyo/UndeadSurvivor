@@ -6,11 +6,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] GameObject targetGameObject;
+    Character targetCharacter;
     [SerializeField] float speed = 3;
 
     Rigidbody2D rgbd2d;
 
-    [SerializeField] int hp = 4;
+    [SerializeField] int hp = 999;
+    [SerializeField] int damage = 1;
 
     private void Awake()
     {
@@ -34,7 +36,12 @@ public class Enemy : MonoBehaviour
 
     private void Attack()
     {
-        //Debug.Log("Attack");
+        if(targetCharacter == null)
+        {
+            targetCharacter = targetGameObject.GetComponent<Character>();
+        }
+        targetCharacter.TakeDamage(damage);
+
     }
 
     public void TakeDamage(int damage)
