@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Run 0
+      name: Farmer 0_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,20 +137,20 @@ TextureImporter:
         width: 18
         height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14dae747f4c968947832a29cb87df2be
-      internalID: 756718194
+      spriteID: 07f94d5afb5c4f04ca396d71d29779c0
+      internalID: 402667662
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run 1
+      name: Farmer 0_1
       rect:
         serializedVersion: 2
         x: 19
@@ -158,20 +158,20 @@ TextureImporter:
         width: 18
         height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e6834bccf1872d42b5310fb25d6c4cd
-      internalID: 1188953851
+      spriteID: 766dc02a72ba5584cbf8aea53cba4f4a
+      internalID: 1406277587
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run 2
+      name: Farmer 0_2
       rect:
         serializedVersion: 2
         x: 38
@@ -179,20 +179,20 @@ TextureImporter:
         width: 18
         height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 428564b895ff78141b4c610dcd1cd7c2
-      internalID: -1330136348
+      spriteID: ae5660f60b98c6f41a428972c6de56a8
+      internalID: -1855152669
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run 3
+      name: Farmer 0_3
       rect:
         serializedVersion: 2
         x: 0
@@ -200,20 +200,20 @@ TextureImporter:
         width: 18
         height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a75bcb333d9bed145b2e24a1a0bd3a17
-      internalID: 857682546
+      spriteID: 0f59586695a0aa74e8a1cf492166de8a
+      internalID: -1945639411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run 4
+      name: Farmer 0_4
       rect:
         serializedVersion: 2
         x: 19
@@ -221,20 +221,20 @@ TextureImporter:
         width: 18
         height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16b22f2e5b403c946b37bde92e4c2546
-      internalID: 816710676
+      spriteID: c68826deb8d5dfb45a658ceee57ac971
+      internalID: -1155160184
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run 5
+      name: Farmer 0_5
       rect:
         serializedVersion: 2
         x: 38
@@ -242,20 +242,20 @@ TextureImporter:
         width: 18
         height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54f245b5eb3bef04aadbd9b6369036e7
-      internalID: -279580634
+      spriteID: 0ee481f10e0ede54da1265562d12b028
+      internalID: 822287899
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Stand 0
+      name: Farmer 0_6
       rect:
         serializedVersion: 2
         x: 0
@@ -263,20 +263,20 @@ TextureImporter:
         width: 18
         height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 533812af7d5600441baf44959e5e061d
-      internalID: 2074195962
+      spriteID: bffb8d34f26b5d64895508ffbaab1ab0
+      internalID: 548697091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Stand 1
+      name: Farmer 0_7
       rect:
         serializedVersion: 2
         x: 19
@@ -284,20 +284,20 @@ TextureImporter:
         width: 18
         height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c13e93016cb8b744dbbbd264d1c7578a
-      internalID: -835033330
+      spriteID: 9ba3b161bc12aec4180e9bd400b84091
+      internalID: 94644843
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Stand 2
+      name: Farmer 0_8
       rect:
         serializedVersion: 2
         x: 38
@@ -305,20 +305,20 @@ TextureImporter:
         width: 18
         height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b318410a01b3c3419cc06f6b31cef8b
-      internalID: 2018938545
+      spriteID: 0d2d5e48091121f42a524c2a2e96a9f7
+      internalID: 2042638040
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Stand 3
+      name: Farmer 0_9
       rect:
         serializedVersion: 2
         x: 0
@@ -326,20 +326,20 @@ TextureImporter:
         width: 18
         height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86fc1428fb94004498c6657f492807eb
-      internalID: 1168662286
+      spriteID: 51079fb0388ccda48a96adb69fa8f1d1
+      internalID: -906440029
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dead 0
+      name: Farmer 0_10
       rect:
         serializedVersion: 2
         x: 19
@@ -347,20 +347,20 @@ TextureImporter:
         width: 18
         height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0baff4940b122d4489d6cd7b5ad1c8a
-      internalID: -1714268051
+      spriteID: 7975e6e91635c994c81c5a324db5e3a7
+      internalID: -606151134
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dead 1
+      name: Farmer 0_11
       rect:
         serializedVersion: 2
         x: 38
@@ -368,14 +368,14 @@ TextureImporter:
         width: 18
         height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e270229b439e9c84eabeb8e917b3c23a
-      internalID: 1185615925
+      spriteID: 99a5330737eb01349b31e18c47facd24
+      internalID: -90370385
       vertices: []
       indices: 
       edges: []
@@ -391,18 +391,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dead 0: -1714268051
-      Run 0: 756718194
-      Run 5: -279580634
-      Stand 3: 1168662286
-      Run 2: -1330136348
-      Run 3: 857682546
-      Stand 0: 2074195962
-      Stand 2: 2018938545
-      Run 4: 816710676
-      Run 1: 1188953851
-      Dead 1: 1185615925
-      Stand 1: -835033330
+      Farmer 0_5: 822287899
+      Farmer 0_6: 548697091
+      Farmer 0_11: -90370385
+      Farmer 0_0: 402667662
+      Farmer 0_2: -1855152669
+      Farmer 0_8: 2042638040
+      Farmer 0_1: 1406277587
+      Farmer 0_7: 94644843
+      Farmer 0_3: -1945639411
+      Farmer 0_9: -906440029
+      Farmer 0_4: -1155160184
+      Farmer 0_10: -606151134
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
