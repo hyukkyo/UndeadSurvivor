@@ -13,27 +13,27 @@ public class Reposition : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Area"))  //AreaÅ×±×°¡ ¾Æ´Ï¸é 
+        if (!collision.CompareTag("Area"))  //Areaï¿½×±×°ï¿½ ï¿½Æ´Ï¸ï¿½ 
             return;
 
         Vector3 playerPos = GameManager.instance.player.transform.position;
         Vector3 myPos = transform.position;
-        float diffX = Mathf.Abs(playerPos.x - myPos.x);        //ÇÃ·¹ÀÌ¾î¿Í Å¸ÀÏ¸Ê°£ÀÇ xÁÂÇ¥ Â÷ÀÌ (Àý´ë°ª)
-        float diffY = Mathf.Abs(playerPos.y - myPos.y);        //ÇÃ·¹ÀÌ¾î¿Í Å¸ÀÏ¸Ê°£ÀÇ yÁÂÇ¥ Â÷ÀÌ (Àý´ë°ª)
+        float diffX = Mathf.Abs(playerPos.x - myPos.x);        //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ Å¸ï¿½Ï¸Ê°ï¿½ï¿½ï¿½ xï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ë°ª)
+        float diffY = Mathf.Abs(playerPos.y - myPos.y);        //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ Å¸ï¿½Ï¸Ê°ï¿½ï¿½ï¿½ yï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ë°ª)
 
         Vector3 playerDir = GameManager.instance.player.inputVec;
-        float dirX = playerDir.x < 0 ? -1 : 1;  //»ïÇ× ¿¬»êÀÚ (Á¶°Ç?ifTrue:ifFalse)
-        float dirY = playerDir.y < 0 ? -1 : 1;  //»ïÇ× ¿¬»êÀÚ (Á¶°Ç?ifTrue:ifFalse)
+        float dirX = playerDir.x < 0 ? -1 : 1;  //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½?ifTrue:ifFalse)
+        float dirY = playerDir.y < 0 ? -1 : 1;  //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½?ifTrue:ifFalse)
 
         switch (transform.tag)
         {
             case "Ground":
                 if(diffX > diffY)
                 {
-                    transform.Translate(Vector3.right * dirX * 40);     //40 = Å¸ÀÏ¸Ê Å©±â 2¹è
+                    transform.Translate(Vector3.right * dirX * 40);     //40 = Å¸ï¿½Ï¸ï¿½ Å©ï¿½ï¿½ 2ï¿½ï¿½
                 }else if (diffX < diffY)
                 {
-                    transform.Translate(Vector3.up * dirY * 40);     //40 = Å¸ÀÏ¸Ê Å©±â 2¹è
+                    transform.Translate(Vector3.up * dirY * 40);     //40 = Å¸ï¿½Ï¸ï¿½ Å©ï¿½ï¿½ 2ï¿½ï¿½
                 }
                 break;
             case "Enemy":
