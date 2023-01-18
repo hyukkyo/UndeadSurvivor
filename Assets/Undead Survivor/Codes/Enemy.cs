@@ -6,7 +6,9 @@ public class Enemy : MonoBehaviour
 {
     public float speed;
     public float health;
-    public float maxHealth;
+    public float attackDamage = 10;
+    public float maxHealth = 10;
+    public float curHealth = 10;
     public RuntimeAnimatorController[] animCon;
     public Rigidbody2D target;
 
