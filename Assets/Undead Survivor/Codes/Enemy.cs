@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public RuntimeAnimatorController[] animCon;
     public Rigidbody2D target;
 
+
     bool isLive;
 
     Rigidbody2D rigid;
@@ -58,5 +59,25 @@ public class Enemy : MonoBehaviour
         speed = data.speed;
         maxHealth = data.health;
         health = data.health;
+    }
+
+    void OnHit(int dmg)
+    {
+        health -= dmg;
+        //hit anim 으로 변경 코드 필요
+        if(health <= 0)
+        {
+            anim.SetBool("Dead", true);
+            speed = 0;
+            gameObject.SetActive(false);
+        }
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Bullet")
+        {
+            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+            OnHit(bullet.dmg);
+        }
     }
 }
