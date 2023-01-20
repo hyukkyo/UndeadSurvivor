@@ -21,6 +21,6 @@ public class BorderBullet : MonoBehaviour
     void Update()
     {
         transform.position = GameManager.instance.player.transform.position + borderBulletPos;
-        transform.localEulerAngles = new Vector3(0, 0, 0);
+        //transform.localEulerAngles = new Vector3(0, 0, 0);
     }
 }

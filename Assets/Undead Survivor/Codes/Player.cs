@@ -21,8 +21,10 @@ public class Player : MonoBehaviour {
 
     public GameObject bulletObj0;
     public GameObject bulletObj3;
-    public int[] WeaponLevel= { 0, 0, 0, 1, 0, 0 };
+    public int[] WeaponLevel= { 0, 0, 0, 0, 0, 0 };
     public float[] WeaponTimer = { 0, 0, 0, 0, 0, 0 };
+    public float[] WeaponShotDelay = { 0, 0, 0, 0.3f, 0.1f, 0.4f };
+    public float[] WeaponShotSpead = { 0, 0, 0, 10, 20, 7 };
 
     void Awake() {
         rigid = GetComponent<Rigidbody2D>();
@@ -33,9 +35,12 @@ public class Player : MonoBehaviour {
     void Update() {
         inputVec.x = Input.GetAxisRaw("Horizontal");
         inputVec.y = Input.GetAxisRaw("Vertical");
-        UpdateHpBar(0, 0);
-        if(WeaponLevel[3]!=0)
-            Fire3();
+        hpBar.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, -0.8f, 0));
+        hpBar.value = curHp / maxHp;
+
+        for(int i=3;i<=5;i++)
+            if (WeaponLevel[i] != 0)
+                Fire(i);
     }
 
     void FixedUpdate() {
@@ -44,9 +49,8 @@ public class Player : MonoBehaviour {
 
     }
 
-    void UpdateHpBar(int type, int value_)
+    void UpdateHpBar(int type, float value_)
     {
-        hpBar.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, -0.8f, 0));
         if (type == DAMAGE) {
             curHp -= value_;
             hpBar.value = curHp / maxHp;
@@ -57,9 +61,9 @@ public class Player : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter(Collider other) {
+    /*void OnCollisionEnter(Collider other) {
         UpdateHpBar(DAMAGE, 3);
-    }
+    }*/
 
     void LateUpdate() {
         anim.SetFloat("Speed", inputVec.magnitude);
@@ -72,7 +76,7 @@ public class Player : MonoBehaviour {
     {
         float nearestEnemyDistance=Mathf.Infinity;
         Vector3 nearestEnemyDirection=Vector3.up;
-        for (int i=0; i<3;i++)  //enemy => index 0~2 bullet => index 3
+        for (int i=0; i<2;i++)  //enemy => index 0~2 bullet => index 3~5
         {
             for (int j = 0; j < GameManager.instance.pool.pools[i].Count; j++)
             {
@@ -89,28 +93,90 @@ public class Player : MonoBehaviour {
         }
         return nearestEnemyDirection;
     }
-    void Fire3()
+    void Fire(int WeaponNum)        //총 종류에 따라 발사가 달라짐
     {
-        WeaponTimer[3] += Time.deltaTime;
-
-        if (WeaponTimer[3] > 0.3/WeaponLevel[3])
+        WeaponTimer[WeaponNum] += Time.deltaTime;
+        if (WeaponTimer[WeaponNum] > WeaponShotDelay[WeaponNum]/WeaponLevel[WeaponNum])
         {
-            WeaponTimer[3] = 0;
-            Vector3 FireDirection = nearestEnemyDirection();
-            GameObject bullet = GameManager.instance.pool.Get(3);
-            bullet.transform.position = transform.position;
-            if (FireDirection.x >= 0)
-            {
-                bullet.transform.localEulerAngles = new Vector3(0, 0, -180 * Mathf.Acos(FireDirection.y) / Mathf.PI);
-            }
-            else
-            {
-                bullet.transform.localEulerAngles = new Vector3(0, 0, 180 * Mathf.Acos(FireDirection.y) / Mathf.PI);
-            }
+            Vector3 FireDirection = nearestEnemyDirection();    //가장 가까운 적 탐섹
+            WeaponTimer[WeaponNum] = 0;
+            GameObject bullet=MakeBullet(FireDirection, WeaponNum);
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
-            rigid.AddForce(FireDirection * 10, ForceMode2D.Impulse);
+            rigid.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
+            if (WeaponNum == 5)     //ShotGun
+            {
+                float FireAngle = DirectionToAngle(FireDirection);
+
+                FireAngle += Mathf.PI / 6;
+                FireDirection = new Vector3(Mathf.Cos(FireAngle), Mathf.Sin(FireAngle), 0);
+                GameObject bullet1 = MakeBullet(FireDirection, WeaponNum);
+                Rigidbody2D rigid1 = bullet1.GetComponent<Rigidbody2D>(); 
+                rigid1.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
+
+                FireAngle -= Mathf.PI / 3;
+                FireDirection = new Vector3(Mathf.Cos(FireAngle), Mathf.Sin(FireAngle), 0);
+                GameObject bullet2 = MakeBullet(FireDirection, WeaponNum);
+                Rigidbody2D rigid2 = bullet2.GetComponent<Rigidbody2D>();
+                rigid2.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
+            }
         }
 
+    }
+
+    float DirectionToAngle(Vector3 Direction)
+    {
+        float Angle;
+        if (Direction.y >= 0)
+        {
+            Angle = Mathf.Acos(Direction.x);
+        }
+        else
+        {
+            Angle = -Mathf.Acos(Direction.x);
+        }
+        return Angle;
+    }
+    GameObject MakeBullet(Vector3 FireDirection, int WeaponNum)
+    {
+        GameObject bullet = GameManager.instance.pool.Get(WeaponNum);
+        bullet.transform.position = transform.position;
+        bullet.transform.localEulerAngles = new Vector3(0, 0, (180 * DirectionToAngle(FireDirection) / Mathf.PI)-90);
+        return bullet;
+    }
+
+    void OnHit(float dmg)
+    {
+        UpdateHpBar(DAMAGE, dmg);
+        //hit anim 으로 변경 코드 필요
+        if (curHp <= 0)
+        {
+            anim.SetBool("Dead", true);
+            speed = 0;
+            Invoke("Dead", 1);
+        }
+    }
+    /*void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("Hit");
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            OnHit(enemy.attackDamage);
+        }
+    }*/
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Debug.Log("Hit");
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            OnHit(enemy.attackDamage);
+        }
+    }
+
+    void Dead()
+    {
+        gameObject.SetActive(false);
     }
     /*
      * In the lecture3, Lecture02(Moving using the Update function) is used

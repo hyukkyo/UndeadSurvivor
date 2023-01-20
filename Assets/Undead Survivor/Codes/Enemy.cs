@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour
     public float health;
     public float attackDamage = 10;
     public float maxHealth = 10;
-    public float curHealth = 10;
     public RuntimeAnimatorController[] animCon;
     public Rigidbody2D target;
 
@@ -61,7 +60,7 @@ public class Enemy : MonoBehaviour
         health = data.health;
     }
 
-    void OnHit(int dmg)
+    void OnHit(float dmg)
     {
         health -= dmg;
         //hit anim 으로 변경 코드 필요
@@ -69,8 +68,12 @@ public class Enemy : MonoBehaviour
         {
             anim.SetBool("Dead", true);
             speed = 0;
-            gameObject.SetActive(false);
+            Invoke("Dead", 0.2f);
         }
+    }
+    void Dead()
+    {
+        gameObject.SetActive(false);
     }
     void OnTriggerEnter2D(Collider2D collision)
     {

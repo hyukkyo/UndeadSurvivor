@@ -209,7 +209,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36402723}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -232,7 +232,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -574,7 +574,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366136016}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -597,7 +597,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -794,14 +794,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 934571490, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1b30305eb7bce14680871758aa5829f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10102,7 +10102,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -10128,7 +10128,7 @@ MonoBehaviour:
   hpBar: {fileID: 1542884625}
   bulletObj0: {fileID: 3034024444601293629, guid: a143ca02ac641af4ba255d8307edc02e, type: 3}
   bulletObj3: {fileID: 597996079373356598, guid: 4323f326c9d58214e9cd7a1ceb845fe1, type: 3}
-  WeaponLevel: 000000000000000000000000010000000000000000000000
+  WeaponLevel: 000000000000000000000000000000000100000000000000
   WeaponTimer:
   - 0
   - 0
@@ -10136,6 +10136,20 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  WeaponShotDelay:
+  - 0
+  - 0
+  - 0
+  - 0.3
+  - 0.1
+  - 0.4
+  WeaponShotSpead:
+  - 0
+  - 0
+  - 0
+  - 10
+  - 20
+  - 7
 --- !u!114 &1325394000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10611,6 +10625,8 @@ MonoBehaviour:
   - {fileID: 6073480558510994728, guid: 1f18284e3c045425e9da5c7e6bd04e52, type: 3}
   - {fileID: 6073480558510994728, guid: 1f18284e3c045425e9da5c7e6bd04e52, type: 3}
   - {fileID: 597996079373356598, guid: 4323f326c9d58214e9cd7a1ceb845fe1, type: 3}
+  - {fileID: 4329762205368697925, guid: 30d027380073c8d40932f773af74617a, type: 3}
+  - {fileID: 48343134948379166, guid: db200e25734f99449a077cf53c920928, type: 3}
 --- !u!4 &1450610231
 Transform:
   m_ObjectHideFlags: 0
@@ -10801,7 +10817,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -10820,7 +10836,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 509697029}
   m_FillRect: {fileID: 509697028}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
@@ -10930,7 +10946,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613062123}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -10953,7 +10969,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -15267,7 +15283,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776803435}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -15290,7 +15306,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
