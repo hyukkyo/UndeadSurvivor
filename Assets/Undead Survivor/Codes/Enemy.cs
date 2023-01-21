@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
     Animator anim;
     SpriteRenderer spriter;
 
+    [SerializeField] int experience_reward = 400;
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -73,6 +75,7 @@ public class Enemy : MonoBehaviour
     }
     void Dead()
     {
+        target.GetComponent<Level>().AddExperience(experience_reward);
         gameObject.SetActive(false);
     }
     void OnTriggerEnter2D(Collider2D collision)
