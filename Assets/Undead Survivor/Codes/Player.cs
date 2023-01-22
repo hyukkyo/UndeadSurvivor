@@ -93,12 +93,12 @@ public class Player : MonoBehaviour {
         }
         return nearestEnemyDirection;
     }
-    void Fire(int WeaponNum)        //ÃÑ Á¾·ù¿¡ µû¶ó ¹ß»ç°¡ ´Þ¶óÁü
+    void Fire(int WeaponNum)        //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ç°¡ ï¿½Þ¶ï¿½ï¿½ï¿½
     {
         WeaponTimer[WeaponNum] += Time.deltaTime;
         if (WeaponTimer[WeaponNum] > WeaponShotDelay[WeaponNum]/WeaponLevel[WeaponNum])
         {
-            Vector3 FireDirection = nearestEnemyDirection();    //°¡Àå °¡±î¿î Àû Å½¼½
+            Vector3 FireDirection = nearestEnemyDirection();    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Å½ï¿½ï¿½
             WeaponTimer[WeaponNum] = 0;
             GameObject bullet=MakeBullet(FireDirection, WeaponNum);
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
@@ -147,7 +147,7 @@ public class Player : MonoBehaviour {
     void OnHit(float dmg)
     {
         UpdateHpBar(DAMAGE, dmg);
-        //hit anim À¸·Î º¯°æ ÄÚµå ÇÊ¿ä
+        //hit anim ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½Ê¿ï¿½
         if (curHp <= 0)
         {
             anim.SetBool("Dead", true);
@@ -177,6 +177,7 @@ public class Player : MonoBehaviour {
     void Dead()
     {
         gameObject.SetActive(false);
+        GetComponent<PlayerGameOver>().GameOver();
     }
     /*
      * In the lecture3, Lecture02(Moving using the Update function) is used
