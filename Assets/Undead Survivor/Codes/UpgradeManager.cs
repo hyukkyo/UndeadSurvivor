@@ -32,6 +32,7 @@ public class UpgradeManager : MonoBehaviour {
 
     public void Upgrade(int pressedButtonID) {
         GameManager.instance.player.GetComponent<Level>().Upgrade(pressedButtonID);
+        
         CloseUpgradePanel();
     }
 

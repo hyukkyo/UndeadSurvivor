@@ -51,6 +51,7 @@ public class Level : MonoBehaviour {
             acquiredUpgrades = new List<UpgradeData>();
         }
 
+        GameManager.instance.player.WeaponLevel[upgradeData.WeaponNum] = 1; //upgrade weapon
         acquiredUpgrades.Add(upgradeData);
         upgrades.Remove(upgradeData);
     }
@@ -63,7 +64,7 @@ public class Level : MonoBehaviour {
         }
 
         for (int i = 0; i < count; i++) {
-            upgradeList.Add(upgrades[Random.Range(0, upgrades.Count)]);
+            upgradeList.Add(upgrades[i]);
         }
 
         return upgradeList;

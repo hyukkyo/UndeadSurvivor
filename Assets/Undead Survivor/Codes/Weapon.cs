@@ -12,12 +12,15 @@ public class Weapon : MonoBehaviour
     {
         spriter = GetComponent<SpriteRenderer>();
     }
-
-    void Update()
+    
+    void LateUpdate()
     {
-        spriter.flipX = GameManager.instance.player.spriter.flipX;
-
+        if (GameManager.instance.player.inputVec.x != 0)
+        {
+            spriter.flipX = GameManager.instance.player.inputVec.x < 0;
+        }
     }
+    
 
     void Weapon0()
     {

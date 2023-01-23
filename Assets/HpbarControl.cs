@@ -7,11 +7,11 @@ public class Hpbar_Control : MonoBehaviour
     public List<Transform> obj  ;
     public List<GameObject> hp_bar;
 
-    Camera camera;
+    Camera camera1;
     // Start is called before the first frame update
     void Start()
     {
-        camera = Camera.main;
+        camera1 = Camera.main;
         for (int i = 0; i < obj.Count; i++) {
             hp_bar[i].transform.position = obj[i].position;
         }
@@ -22,7 +22,7 @@ public class Hpbar_Control : MonoBehaviour
     {
         for (int i = 0; i < obj.Count; i++)
         {
-            hp_bar[i].transform.position = camera.WorldToScreenPoint(obj[i].position + new Vector3(0,1f,0));
+            hp_bar[i].transform.position = camera1.WorldToScreenPoint(obj[i].position + new Vector3(0,1f,0));
         }
     }
 }

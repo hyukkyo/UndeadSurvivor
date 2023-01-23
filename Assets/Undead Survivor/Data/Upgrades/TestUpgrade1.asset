@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: TestUpgrade1
   m_EditorClassIdentifier: 
   upgradeType: 0
-  Name: Test1
-  icon: {fileID: -353751291, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  Name: Weapon3Upgrade
+  icon: {fileID: -205726582, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+  WeaponNum: 3
