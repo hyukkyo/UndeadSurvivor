@@ -38,7 +38,9 @@ public class Level : MonoBehaviour {
             selectedUpgrades.Clear();
             selectedUpgrades.AddRange(GetUpgrades(3));
 
-            upgradePanel.OpenUpgradePanel(GetUpgrades(3));
+            if (level < 5) {
+                upgradePanel.OpenUpgradePanel(GetUpgrades(3));
+            }
             experience -= TO_LEVEL_UP;
             level += 1;
         }
@@ -51,7 +53,10 @@ public class Level : MonoBehaviour {
             acquiredUpgrades = new List<UpgradeData>();
         }
 
-        GameManager.instance.player.WeaponLevel[upgradeData.WeaponNum] = 1; //upgrade weapon
+        GameManager.instance.player.WeaponLevel[upgradeData.WeaponNum] += 1; //upgrade weapon
+        if (GameManager.instance.player.WeaponLevel[0] != 0) { // if shovel upgrade
+            UpgradeShovel(GameManager.instance.player.WeaponLevel[0]);
+        }
         acquiredUpgrades.Add(upgradeData);
         upgrades.Remove(upgradeData);
     }
@@ -68,5 +73,8 @@ public class Level : MonoBehaviour {
         }
 
         return upgradeList;
+    }
+    public void UpgradeShovel(int numShovel) {
+        
     }
 }

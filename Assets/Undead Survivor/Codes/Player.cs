@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
 
     public Vector2 inputVec;
     public float speed;
+    public float rotateSpeed; // Rotation speed for shovel
     public float curHp = 100;
     public float maxHp = 100;
 
@@ -96,28 +97,72 @@ public class Player : MonoBehaviour {
     void Fire(int WeaponNum)        //�� ������ ���� �߻簡 �޶���
     {
         WeaponTimer[WeaponNum] += Time.deltaTime;
+
         if (WeaponTimer[WeaponNum] > WeaponShotDelay[WeaponNum]/WeaponLevel[WeaponNum])
         {
-            Vector3 FireDirection = nearestEnemyDirection();    //���� ����� �� Ž��
+            // Initiate first bullet
+            Vector3 FireDirection = nearestEnemyDirection();
             WeaponTimer[WeaponNum] = 0;
             GameObject bullet=MakeBullet(FireDirection, WeaponNum);
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
-            rigid.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
-            if (WeaponNum == 5)     //ShotGun
-            {
-                float FireAngle = DirectionToAngle(FireDirection);
 
-                FireAngle += Mathf.PI / 6;
-                FireDirection = new Vector3(Mathf.Cos(FireAngle), Mathf.Sin(FireAngle), 0);
-                GameObject bullet1 = MakeBullet(FireDirection, WeaponNum);
-                Rigidbody2D rigid1 = bullet1.GetComponent<Rigidbody2D>(); 
-                rigid1.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
+            switch(WeaponNum) {
+                case 0: // Shovel
+                    break;
+                
+                case 3: // Pistol
+                    // Pistol's default shot speed = 10
+                    if (WeaponLevel[3] == 2)
+                        WeaponShotSpead[3] = 11;    
+                    else if (WeaponLevel[3] == 3)
+                        WeaponShotSpead[3] = 13;
+                    
+                    rigid.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
+                    break;
+                
+                case 4: // AR
+                    // AR's default shot speed = 20
+                    if (WeaponLevel[4] == 2)
+                        WeaponShotSpead[4] = 22;
+                    else if (WeaponLevel[4] == 3)
+                        WeaponShotSpead[4] = 25;
+                    
+                    rigid.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
+                    break;
+                
+                case 5: // Shotgun
+                    // Shotgun's default shot speed = 7
+                    if (WeaponLevel[5] == 3)
+                        WeaponShotSpead[5] = 9;
+                    rigid.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
+                    float FireAngle = DirectionToAngle(FireDirection);
 
-                FireAngle -= Mathf.PI / 3;
-                FireDirection = new Vector3(Mathf.Cos(FireAngle), Mathf.Sin(FireAngle), 0);
-                GameObject bullet2 = MakeBullet(FireDirection, WeaponNum);
-                Rigidbody2D rigid2 = bullet2.GetComponent<Rigidbody2D>();
-                rigid2.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
+                    FireAngle += Mathf.PI / 6;
+                    FireDirection = new Vector3(Mathf.Cos(FireAngle), Mathf.Sin(FireAngle), 0);
+                    GameObject bullet1 = MakeBullet(FireDirection, WeaponNum);
+                    Rigidbody2D rigid1 = bullet1.GetComponent<Rigidbody2D>(); 
+                    rigid1.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
+
+                    FireAngle -= Mathf.PI / 3;
+                    FireDirection = new Vector3(Mathf.Cos(FireAngle), Mathf.Sin(FireAngle), 0);
+                    GameObject bullet2 = MakeBullet(FireDirection, WeaponNum);
+                    Rigidbody2D rigid2 = bullet2.GetComponent<Rigidbody2D>();
+                    rigid2.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
+                    
+                    if (WeaponLevel[WeaponNum] > 1) {
+                        FireAngle += Mathf.PI / 12;
+                        FireDirection = new Vector3(Mathf.Cos(FireAngle), Mathf.Sin(FireAngle), 0);
+                        GameObject bullet3 = MakeBullet(FireDirection, WeaponNum);
+                        Rigidbody2D rigid3 = bullet3.GetComponent<Rigidbody2D>();
+                        rigid3.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
+
+                        FireAngle -= Mathf.PI / 6;
+                        FireDirection = new Vector3(Mathf.Cos(FireAngle), Mathf.Sin(FireAngle), 0);
+                        GameObject bullet4 = MakeBullet(FireDirection, WeaponNum);
+                        Rigidbody2D rigid4 = bullet4.GetComponent<Rigidbody2D>();
+                        rigid4.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
+                    }
+                    break;
             }
         }
 
