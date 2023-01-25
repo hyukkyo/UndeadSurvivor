@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] int experience_reward = 400;
 
+    public GameObject hudDamageText;
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -62,10 +63,12 @@ public class Enemy : MonoBehaviour
         health = data.health;
     }
 
-    void OnHit(float dmg)
+    void OnHit(int dmg)
     {
         health -= dmg;
-        Debug.Log(dmg);
+        GameObject hudText = Instantiate(hudDamageText);
+        hudText.transform.position = transform.position + new Vector3(0, 1, 0);
+        hudText.GetComponent<DamageText>().damage = dmg;
         //hit anim 으로 변경 코드 필요
         if(health <= 0)
         {
