@@ -74,7 +74,7 @@ public class Level : MonoBehaviour {
 
         return upgradeList;
     }
-    public void UpgradeShovel(int numShovel) {
-        
+    public void UpgradeShovel(int shovelLevel) {
+        GameManager.instance.player.bulletObj0[shovelLevel-1].SetActive(true);
     }
 }

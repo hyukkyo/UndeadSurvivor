@@ -20,12 +20,11 @@ public class Player : MonoBehaviour {
     Animator anim;
     public Slider hpBar;
 
-    public GameObject bulletObj0;
-    public GameObject bulletObj3;
+    public GameObject[] bulletObj0;
     public int[] WeaponLevel= { 0, 0, 0, 0, 0, 0 };
     public float[] WeaponTimer = { 0, 0, 0, 0, 0, 0 };
-    public float[] WeaponShotDelay = { 0, 0, 0, 0.3f, 0.1f, 0.4f };
-    public float[] WeaponShotSpead = { 0, 0, 0, 10, 20, 7 };
+    public float[] WeaponShotDelay = { 0, 1, 1, 0.3f, 0.1f, 0.4f };
+    public float[] WeaponShotSpead = { 0, 3, 0, 10, 20, 7 };
 
     void Awake() {
         rigid = GetComponent<Rigidbody2D>();
@@ -39,7 +38,7 @@ public class Player : MonoBehaviour {
         hpBar.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, -0.8f, 0));
         hpBar.value = curHp / maxHp;
 
-        for(int i=3;i<=5;i++)
+        for(int i=1;i<=5;i++)
             if (WeaponLevel[i] != 0)
                 Fire(i);
     }
@@ -94,7 +93,7 @@ public class Player : MonoBehaviour {
         }
         return nearestEnemyDirection;
     }
-    void Fire(int WeaponNum)        //�� ������ ���� �߻簡 �޶���
+    void Fire(int WeaponNum)        
     {
         WeaponTimer[WeaponNum] += Time.deltaTime;
 
@@ -102,22 +101,32 @@ public class Player : MonoBehaviour {
         {
             // Initiate first bullet
             Vector3 FireDirection = nearestEnemyDirection();
+            Rigidbody2D rigid;
             WeaponTimer[WeaponNum] = 0;
-            GameObject bullet=MakeBullet(FireDirection, WeaponNum);
-            Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
+            if (WeaponNum == 2)
+            {
+                GameObject bullet = MakeBullet(FireDirection, WeaponNum, transform.position+FireDirection);
+                rigid = bullet.GetComponent<Rigidbody2D>();
+            }
+            else
+            {
+                GameObject bullet = MakeBullet(FireDirection, WeaponNum, transform.position);
+                rigid = bullet.GetComponent<Rigidbody2D>();
+            }
 
-            switch(WeaponNum) {
-                case 0: // Shovel
+            switch (WeaponNum) {
+                case 1: //Fork
+                    Vector3 ForkFireDirection = new Vector3(Random.Range(-1, 2), Random.Range(2,4), 0);
+                    rigid.AddForce(ForkFireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
                     break;
-                
+
+                case 2: //Scythe
+                    rigid.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
+                    break;
+
                 case 3: // Pistol
                     // Pistol's default shot speed = 10
-                    if (WeaponLevel[3] == 2)
-                        WeaponShotSpead[3] = 11;    
-                    else if (WeaponLevel[3] == 3)
-                        WeaponShotSpead[3] = 13;
-                    
-                    rigid.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
+                    rigid.AddForce(FireDirection * (WeaponShotSpead[WeaponNum]+WeaponLevel[WeaponNum]), ForceMode2D.Impulse);
                     break;
                 
                 case 4: // AR
@@ -127,28 +136,26 @@ public class Player : MonoBehaviour {
                     else if (WeaponLevel[4] == 3)
                         WeaponShotSpead[4] = 25;
                     
-                    rigid.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
+                    rigid.AddForce(FireDirection * (WeaponShotSpead[WeaponNum] + 2*WeaponLevel[WeaponNum]), ForceMode2D.Impulse);
                     break;
                 
                 case 5: // Shotgun
                     // Shotgun's default shot speed = 7
-                    if (WeaponLevel[5] == 3)
-                        WeaponShotSpead[5] = 9;
-                    rigid.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
+                    rigid.AddForce(FireDirection * (WeaponShotSpead[WeaponNum] + WeaponLevel[WeaponNum]), ForceMode2D.Impulse);
                     float FireAngle = DirectionToAngle(FireDirection);
 
                     FireAngle += Mathf.PI / 6;
                     FireDirection = new Vector3(Mathf.Cos(FireAngle), Mathf.Sin(FireAngle), 0);
-                    GameObject bullet1 = MakeBullet(FireDirection, WeaponNum);
+                    GameObject bullet1 = MakeBullet(FireDirection, WeaponNum,transform.position);
                     Rigidbody2D rigid1 = bullet1.GetComponent<Rigidbody2D>(); 
-                    rigid1.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
+                    rigid1.AddForce(FireDirection * (WeaponShotSpead[WeaponNum] + WeaponLevel[WeaponNum]), ForceMode2D.Impulse);
 
                     FireAngle -= Mathf.PI / 3;
                     FireDirection = new Vector3(Mathf.Cos(FireAngle), Mathf.Sin(FireAngle), 0);
-                    GameObject bullet2 = MakeBullet(FireDirection, WeaponNum);
+                    GameObject bullet2 = MakeBullet(FireDirection, WeaponNum,transform.position);
                     Rigidbody2D rigid2 = bullet2.GetComponent<Rigidbody2D>();
-                    rigid2.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
-                    
+                    rigid2.AddForce(FireDirection * (WeaponShotSpead[WeaponNum] + WeaponLevel[WeaponNum]), ForceMode2D.Impulse);
+                    /*
                     if (WeaponLevel[WeaponNum] > 1) {
                         FireAngle += Mathf.PI / 12;
                         FireDirection = new Vector3(Mathf.Cos(FireAngle), Mathf.Sin(FireAngle), 0);
@@ -162,6 +169,7 @@ public class Player : MonoBehaviour {
                         Rigidbody2D rigid4 = bullet4.GetComponent<Rigidbody2D>();
                         rigid4.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
                     }
+                    */
                     break;
             }
         }
@@ -181,10 +189,10 @@ public class Player : MonoBehaviour {
         }
         return Angle;
     }
-    GameObject MakeBullet(Vector3 FireDirection, int WeaponNum)
+    GameObject MakeBullet(Vector3 FireDirection, int WeaponNum, Vector3 BulletPos)
     {
-        GameObject bullet = GameManager.instance.pool.Get(WeaponNum);
-        bullet.transform.position = transform.position;
+        GameObject bullet = GameManager.instance.pool.Get(WeaponNum+4);
+        bullet.transform.position = BulletPos;
         bullet.transform.localEulerAngles = new Vector3(0, 0, (180 * DirectionToAngle(FireDirection) / Mathf.PI)-90);
         return bullet;
     }

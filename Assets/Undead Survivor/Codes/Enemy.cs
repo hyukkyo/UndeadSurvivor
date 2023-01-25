@@ -65,6 +65,7 @@ public class Enemy : MonoBehaviour
     void OnHit(float dmg)
     {
         health -= dmg;
+        Debug.Log(dmg);
         //hit anim 으로 변경 코드 필요
         if(health <= 0)
         {
