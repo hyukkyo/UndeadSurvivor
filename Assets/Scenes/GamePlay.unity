@@ -696,7 +696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletNum: 0
-  dmg: 2
+  dmg: 5
 --- !u!50 &140099739
 Rigidbody2D:
   serializedVersion: 4
@@ -11289,7 +11289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletNum: 0
-  dmg: 2
+  dmg: 5
 --- !u!50 &844067815
 Rigidbody2D:
   serializedVersion: 4
@@ -12438,11 +12438,11 @@ MonoBehaviour:
   - 0
   WeaponShotDelay:
   - 0
-  - 1
-  - 1
+  - 2
+  - 2
   - 0.7
-  - 0.1
-  - 0.4
+  - 0.25
+  - 0.9
   WeaponShotSpead:
   - 0
   - 3
@@ -13036,7 +13036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletNum: 0
-  dmg: 2
+  dmg: 5
 --- !u!50 &1408030652
 Rigidbody2D:
   serializedVersion: 4
@@ -13783,7 +13783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletNum: 0
-  dmg: 2
+  dmg: 5
 --- !u!50 &1625216547
 Rigidbody2D:
   serializedVersion: 4
@@ -22912,7 +22912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletNum: 0
-  dmg: 2
+  dmg: 5
 --- !u!50 &1951670335
 Rigidbody2D:
   serializedVersion: 4
@@ -23491,7 +23491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletNum: 0
-  dmg: 2
+  dmg: 5
 --- !u!50 &2133681779
 Rigidbody2D:
   serializedVersion: 4

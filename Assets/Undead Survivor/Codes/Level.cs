@@ -40,10 +40,7 @@ public class Level : MonoBehaviour {
             selectedUpgrades.Clear();
             selectedUpgrades.AddRange(upgradeList);
 
-
-            if (level < 5) {
-                upgradePanel.OpenUpgradePanel(upgradeList);
-            }
+            upgradePanel.OpenUpgradePanel(upgradeList);
             experience -= TO_LEVEL_UP;
             level += 1;
         }
@@ -66,23 +63,17 @@ public class Level : MonoBehaviour {
 
     public List<UpgradeData> GetUpgrades(int count) {
         List<UpgradeData> upgradeList = new List<UpgradeData>();
+        List<int> GachaList = new List<int>() { 0, 1, 2, 3, 4, 5 };
 
         if (count > upgrades.Count) {
             count = upgrades.Count;
         }
 
-        //List<int> GachaList = new List<int>() { 0,1,2,3,4,5 };
-
-        //for (int i = 0; i < count; i++)
-        //{
-            //int rand = Random.Range(0, GachaList.Count);
-            //upgradeList.Add(upgrades[rand]);
-            //print(GachaList[rand]);
-            //GachaList.RemoveAt(rand);
-        //}
-
-        for (int i = 0; i < count; i++) {
-            upgradeList.Add(upgrades[Random.Range(0, 6)]);
+        for (int i = 0; i < count; i++)
+        {
+            int rand = Random.Range(0, GachaList.Count);
+            upgradeList.Add(upgrades[GachaList[rand]]);
+            GachaList.RemoveAt(rand);
         }
 
         return upgradeList;

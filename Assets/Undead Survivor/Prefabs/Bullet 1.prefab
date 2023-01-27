@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletNum: 1
-  dmg: 6
+  dmg: 10
 --- !u!61 &2737406321900666663
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -103,14 +103,15 @@ public class Player : MonoBehaviour {
             Vector3 FireDirection = nearestEnemyDirection();
             Rigidbody2D rigid;
             WeaponTimer[WeaponNum] = 0;
+            GameObject bullet;
             if (WeaponNum == 2)
             {
-                GameObject bullet = MakeBullet(FireDirection, WeaponNum, transform.position+FireDirection);
+                bullet = MakeBullet(FireDirection, WeaponNum, transform.position+FireDirection);
                 rigid = bullet.GetComponent<Rigidbody2D>();
             }
             else
             {
-                GameObject bullet = MakeBullet(FireDirection, WeaponNum, transform.position);
+                bullet = MakeBullet(FireDirection, WeaponNum, transform.position);
                 rigid = bullet.GetComponent<Rigidbody2D>();
             }
 
@@ -121,7 +122,6 @@ public class Player : MonoBehaviour {
                     break;
 
                 case 2: //Scythe
-                    rigid.AddForce(FireDirection * WeaponShotSpead[WeaponNum], ForceMode2D.Impulse);
                     break;
 
                 case 3: // Pistol
