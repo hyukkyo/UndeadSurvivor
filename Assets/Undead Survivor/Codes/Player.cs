@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
     public float rotateSpeed; // Rotation speed for shovel
     public float curHp = 100;
     public float maxHp = 100;
+    public FixedJoystick joy;
 
     Rigidbody2D rigid;
     public SpriteRenderer spriter;
@@ -33,8 +34,11 @@ public class Player : MonoBehaviour {
     }
 
     void Update() {
-        inputVec.x = Input.GetAxisRaw("Horizontal");
-        inputVec.y = Input.GetAxisRaw("Vertical");
+        //inputVec.x = Input.GetAxisRaw("Horizontal");
+        //inputVec.y = Input.GetAxisRaw("Vertical");
+        inputVec.x = joy.Horizontal;
+        inputVec.y = joy.Vertical;
+        
         hpBar.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, -0.8f, 0));
         hpBar.value = curHp / maxHp;
 
