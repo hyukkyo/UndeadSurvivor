@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9ddf39a6c74240cc9de3a1e5d93ab8b, type: 3}
-  m_Name: TestUpgrade2
+  m_Name: machinegun
   m_EditorClassIdentifier: 
   upgradeType: 0
-  Name: Weapon4Upgrade
+  Name: "\uB530\uBC1C\uCD1D"
   icon: {fileID: 563336626, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
   WeaponNum: 4

@@ -32,14 +32,17 @@ public class Level : MonoBehaviour {
     public void CheckLevelUp() {
         if (experience >= TO_LEVEL_UP) {
 
+            List<UpgradeData> upgradeList = GetUpgrades(3);
+
             if (selectedUpgrades == null) {
                 selectedUpgrades = new List<UpgradeData>();
             }
             selectedUpgrades.Clear();
-            selectedUpgrades.AddRange(GetUpgrades(3));
+            selectedUpgrades.AddRange(upgradeList);
+
 
             if (level < 5) {
-                upgradePanel.OpenUpgradePanel(GetUpgrades(3));
+                upgradePanel.OpenUpgradePanel(upgradeList);
             }
             experience -= TO_LEVEL_UP;
             level += 1;
@@ -58,7 +61,7 @@ public class Level : MonoBehaviour {
             UpgradeShovel(GameManager.instance.player.WeaponLevel[0]);
         }
         acquiredUpgrades.Add(upgradeData);
-        upgrades.Remove(upgradeData);
+        //upgrades.Remove(upgradeData);
     }
 
     public List<UpgradeData> GetUpgrades(int count) {
@@ -68,12 +71,23 @@ public class Level : MonoBehaviour {
             count = upgrades.Count;
         }
 
+        //List<int> GachaList = new List<int>() { 0,1,2,3,4,5 };
+
+        //for (int i = 0; i < count; i++)
+        //{
+            //int rand = Random.Range(0, GachaList.Count);
+            //upgradeList.Add(upgrades[rand]);
+            //print(GachaList[rand]);
+            //GachaList.RemoveAt(rand);
+        //}
+
         for (int i = 0; i < count; i++) {
-            upgradeList.Add(upgrades[i]);
+            upgradeList.Add(upgrades[Random.Range(0, 6)]);
         }
 
         return upgradeList;
     }
+
     public void UpgradeShovel(int shovelLevel) {
         GameManager.instance.player.bulletObj0[shovelLevel-1].SetActive(true);
     }

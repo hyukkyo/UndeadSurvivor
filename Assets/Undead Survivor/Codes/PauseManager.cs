@@ -7,7 +7,7 @@ public class PauseManager : MonoBehaviour
     public GameObject gamePausePanel;
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Q)) {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
             if (gamePausePanel.activeInHierarchy == false) {
                 OpenMenu();
             } else {

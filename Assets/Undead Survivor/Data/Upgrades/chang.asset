@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9ddf39a6c74240cc9de3a1e5d93ab8b, type: 3}
-  m_Name: TestUpgrade1
+  m_Name: chang
   m_EditorClassIdentifier: 
   upgradeType: 0
-  Name: Weapon3Upgrade
-  icon: {fileID: -205726582, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
-  WeaponNum: 3
+  Name: "\uC0BC\uC9C0\uCC3D"
+  icon: {fileID: -1786786079, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+  WeaponNum: 1
