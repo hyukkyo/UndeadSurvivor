@@ -6,15 +6,20 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     [SerializeField] GameObject successText;
-    [SerializeField] float maxTime = 5f;
+    [SerializeField] float maxTime = 150f;
     public float timeLeft;
-    public Image timeBar;
+    //public Image timeBar;
+
+    [SerializeField] Text secText;
+
     // Start is called before the first frame update
     void Start()
     {
         successText.SetActive(false);
-        timeBar = GetComponent<Image>();
+        //timeBar = GetComponent<Image>();
         timeLeft = maxTime;
+
+        secText = GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -22,7 +27,9 @@ public class Timer : MonoBehaviour
     {
         if (timeLeft > 0) {
             timeLeft -= Time.deltaTime;
-            timeBar.fillAmount = timeLeft / maxTime;
+            //timeBar.fillAmount = timeLeft / maxTime;
+
+            secText.text = ((int)timeLeft).ToString();
         }
         else {
             successText.SetActive(true);
